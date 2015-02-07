@@ -3,6 +3,8 @@ ugv
 
 An unmanned ground vehicle that using GPS, LiDAR and IMU sensor.
 
+Note: This is an ongoing project. I will update the repo as I make progress. You can ask questions by sending an email to me.
+
 #### Code Folder Descriptions :
 + navigation : obstacle-avoidance algorithm that runs on Raspberry Pi
 + driver : arduino code for driving motors and servos
