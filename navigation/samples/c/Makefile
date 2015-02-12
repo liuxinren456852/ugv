@@ -1,11 +1,11 @@
-TARGET = sensor_parameter get_distance get_distance_intensity get_multiecho get_multiecho_intensity sync_time_stamp calculate_xy find_port
+TARGET = nav_new navigation sensor_parameter get_distance get_distance_intensity get_multiecho get_multiecho_intensity sync_time_stamp calculate_xy find_port
 
 URG_LIB = ../../src/liburg_c.a
 
 include ../../build_rule.mk
 
 CFLAGS = -O2 $(INCLUDES) -I../../include/c
-LDLIBS = -lm `/bin/sh ld_wsock.sh` `/bin/sh ld_setupapi.sh`
+LDLIBS = -lm `/bin/sh ld_wsock.sh` `/bin/sh ld_setupapi.sh` -lwiringPi
 
 all : $(TARGET)
 

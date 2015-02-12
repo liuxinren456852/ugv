@@ -14,9 +14,11 @@
 #include <string.h>
 #include <errno.h>
 #include <wiringPi.h>
-#include <wiringSerial.h>
 
-static void print_data_test(urg_t *urg, long data[], int data_n, long time_stamp, int fd)
+
+
+
+static void print_data_test(urg_t *urg, long data[], int data_n, long time_stamp)
 {
 
 
@@ -35,7 +37,7 @@ static void print_data_test(urg_t *urg, long data[], int data_n, long time_stamp
     if (frontIndex < 235) {
       printf(" position : left ");
       if (data[step] < 50) {
-        serialPutchar(fd, 'l');
+        printf(" test ");
 
       }
     }
@@ -43,7 +45,9 @@ static void print_data_test(urg_t *urg, long data[], int data_n, long time_stamp
     else if (frontIndex >= 235 & frontIndex < 445) {
       printf(" position : front ");
       if (data[step] < 50) {
-      serialPutchar(fd, 'f');
+        // digitalWrite(0, HIGH);
+        // digitalWrite(1, LOW);
+        // digitalWrite(2, LOW);
 
       }
     }
@@ -51,7 +55,10 @@ static void print_data_test(urg_t *urg, long data[], int data_n, long time_stamp
     if (frontIndex >= 445 & frontIndex < 682) {
       printf(" position : right ");
       if (data[step] < 50) {
-        serialPutchar(fd, 'r');
+        // digitalWrite(0, LOW);
+        // digitalWrite(1, LOW);
+        // digitalWrite(2, HIGH);
+
       }
     }
 
@@ -61,6 +68,9 @@ static void print_data_test(urg_t *urg, long data[], int data_n, long time_stamp
 
 
 }
+
+
+
 
 
 static void print_data(urg_t *urg, long data[], int data_n, long time_stamp)
@@ -108,30 +118,14 @@ int main(int argc, char *argv[])
 
   wiringPiSetup();
 
-
-  int fd ;
-  fd = serialOpen ("/dev/ttyACM1", 9600);
-  // if ((fd = serialOpen ("/dev/ttyACM1", 9600)) < 0)
-  // {
-  //   fprintf (stderr, "Unable to open serial device: %s\n", strerror (errno)) ;
-  //   // return 1 ;
-  // }
-  //
-  // if (wiringPiSetup () == -1)
-  // {
-  //   fprintf (stdout, "Unable to start wiringPi: %s\n", strerror (errno)) ;
-  //   // return 1 ;
-  // }
-
-
-
-
-
+  pinMode(0, OUTPUT);
+  pinMode(1, OUTPUT);
+  pinMode(2, OUTPUT);
 
 
 
     enum {
-        CAPTURE_TIMES = 1000,
+        CAPTURE_TIMES = 2,
     };
     urg_t urg;
     long *data = NULL;
@@ -169,7 +163,7 @@ int main(int argc, char *argv[])
             return 1;
         }
         delay(100);
-        print_data_test(&urg, data, n, time_stamp, fd);
+        print_data_test(&urg, data, n, time_stamp);
      }
 
 
