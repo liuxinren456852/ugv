@@ -1,0 +1,27 @@
+
+/project/lib/navigation/
+/project/src/
+/project/src/Makefile
+/project/src/navigation.cpp
+
+
+Makefile:
+
+https://github.com/tkelestemur/ugv/blob/master/navigation/build_rule.mk
+
+
+
+include build_rule.mk
+
+
+all: navigation
+
+
+navigation: navigation.cpp ugv_lib
+static linking:
+  $(GCC) navigation.cpp -I../lib/navigation/include/ -l../lib/navigation/src/*.a
+dynamic (shared object) linking:
+  $(GCC) navigation.cpp -I../lib/navigation/include/
+
+ugv_lib: ../lib/navigation/src/*.cpp ../lib/navigation/include/*.h
+  cd ../lib/navigation/src/ && $(MAKE)

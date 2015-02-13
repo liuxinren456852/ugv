@@ -1,15 +1,22 @@
 const int pinESC = 9;
 const int pinServo = 11;
+const int frontPin = 4;
+const int rightPin = 5;
+const int leftPin = 6;
+
 int cmd = 0;
 
 void goForward();
 void turnLeft();
 void turnRight();
 void stopMotors();
-void handshake();
+//void handshake();
 
 void setup(){
-Serial.begin(9600);
+
+pinMode(frontPin, INPUT);
+pinMode(leftPin, INPUT);
+pinMode(rightPin, INPUT);
 
 pinMode(pinESC, OUTPUT);
 pinMode(pinServo, OUTPUT);
@@ -22,14 +29,13 @@ stopMotors();
 
 
 void loop(){
-cmd = Serial.read();
-Serial.println(cmd);
 
-  if (cmd == 'f') goForward();
+
+  if (frontPin == HIGH) goForward();
   
-  else if (cmd == 'l') turnLeft();
+  else if (leftPin == HIGH) turnLeft();
   
-  else if (cmd == 'r') turnRight();
+  else if (rightPin == HIGH) turnRight();
     
   else if (cmd == 's') stopMotors();
 
@@ -61,16 +67,16 @@ analogWrite(pinESC, 0); // decrease speed
 
 }
 
-void handshake(char cmd){
-  
-  if (cmd == 'f') Serial.write("cmd: going forward");
-  
-  else if (cmd == 'l') Serial.write("cmd: turning left");
-  
-  else if (cmd == 'r') Serial.write("cmd: turning right");
-    
-  else if (cmd == 's') Serial.write("cmd: stropping motors");
-
-  
-  
-}
+//void handshake(char cmd){
+//  
+//  if (cmd == 'f') Serial.write("cmd: going forward");
+//  
+//  else if (cmd == 'l') Serial.write("cmd: turning left");
+//  
+//  else if (cmd == 'r') Serial.write("cmd: turning right");
+//    
+//  else if (cmd == 's') Serial.write("cmd: stropping motors");
+//
+//  
+//  
+//}

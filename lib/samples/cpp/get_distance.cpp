@@ -1,5 +1,5 @@
 /*!
-  \example get_distance.c ï¿½ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
+  \example get_distance.c ‹——£ƒf[ƒ^‚ğæ“¾‚·‚é
 
   \author Satofumi KAMIMURA
 
@@ -21,13 +21,13 @@ namespace
                     const vector<long>& data, long time_stamp)
     {
 #if 1
-
+        // ‘O•û‚Ìƒf[ƒ^‚Ì‚İ‚ğ•\¦
         int front_index = urg.step2index(0);
         cout << data[front_index] << " [mm], ("
              << time_stamp << " [msec])" << endl;
 
 #else
-
+        // ‘S‚Ä‚Ìƒf[ƒ^‚Ì X-Y ‚ÌˆÊ’u‚ğ•\¦
         long min_distance = urg.min_distance();
         long max_distance = urg.max_distance();
         size_t data_n = data.size();
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 {
     Connection_information information(argc, argv);
 
-
+    // Ú‘±
     Urg_driver urg;
     if (!urg.open(information.device_or_ip_name(),
                   information.baudrate_or_port_number(),
@@ -62,9 +62,9 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-
+    // ƒf[ƒ^æ“¾
 #if 1
-    
+    // ƒf[ƒ^‚Ìæ“¾”ÍˆÍ‚ğ•ÏX‚·‚éê‡
     urg.set_scanning_parameter(urg.deg2step(-90), urg.deg2step(+90), 0);
 #endif
     enum { Capture_times = 10 };
