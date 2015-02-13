@@ -6,8 +6,9 @@ An unmanned ground vehicle that using GPS, LiDAR and IMU sensor.
 Note: This is an ongoing project. I will update the repo as I make progress. You can ask questions by sending an email to me.
 
 #### Code Folder Descriptions :
-+ navigation : obstacle-avoidance algorithm that runs on Raspberry Pi
-+ driver : arduino code for driving motors and servos
++ lib : Hokuyo URG sensor library (C/C++)
++ src/navigation : obstacle-avoidance algorithm runs on R.Pi
++ src/motorDriver : Arduino code for generating PWMs for motors
 + APM:Rover you can find it [here](https://github.com/diydrones/ardupilot/tree/master/APMrover2)
 
 #### Part List :
