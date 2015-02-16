@@ -9,6 +9,7 @@ Note: This is an ongoing project. I will update the repo as I make progress. You
 + lib : Hokuyo URG sensor library (C/C++)
 + src/navigation : obstacle-avoidance algorithm runs on R.Pi
 + src/motorDriver : Arduino code for generating PWMs for motors
++ docs : reports and documents 
 + APM:Rover you can find it [here](https://github.com/diydrones/ardupilot/tree/master/APMrover2)
 
 #### Part List :
